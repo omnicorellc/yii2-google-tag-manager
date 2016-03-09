@@ -1,0 +1,34 @@
+{
+    "name": "ezoterik/yii2-google-tag-manager",
+    "description": "Google Tag Manager extension for the Yii2 framework",
+    "type": "yii2-extension",
+    "keywords": [
+        "yii2",
+        "extension",
+        "google",
+        "analytics",
+        "tag manager",
+        "google tag manager"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oleg Balykin",
+            "email": "ezoterik.h@gmail.com",
+            "homepage": "http://ezoterik.name",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/ezoterik/yii2-google-tag-manager/issues?state=open",
+        "source": "https://github.com/ezoterik/yii2-google-tag-manager"
+    },
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ezoterik\\googleTagManager\\": ""
+        }
+    }
+}
