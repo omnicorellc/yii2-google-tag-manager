@@ -55,6 +55,20 @@ class GoogleTagManager extends Object implements BootstrapInterface
      * @param string $key
      * @param string $value
      */
+    public function dataLayerPushItemDelayNoKey($value)
+    {
+        $session = Yii::$app->getSession();
+
+        $dataLayerItems = $session->get($this->sessionKey, []);
+        $dataLayerItems[] = $value;
+
+        $session->set($this->sessionKey, $dataLayerItems);
+    }
+
+    /**
+     * @param string $key
+     * @param string $value
+     */
     public function dataLayerPushItem($key, $value)
     {
         $this->_dataLayerForCurrentRequest[] = [$key => $value];
