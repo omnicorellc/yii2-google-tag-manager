@@ -1,6 +1,6 @@
 <?php
 
-namespace ezoterik\googleTagManager;
+namespace omnicorellc\googleTagManager;
 
 use Yii;
 use yii\base\Application;
