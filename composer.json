@@ -1,5 +1,5 @@
 {
-    "name": "ezoterik/yii2-google-tag-manager",
+    "name": "omnicorellc/yii2-google-tag-manager",
     "description": "Google Tag Manager extension for the Yii2 framework",
     "type": "yii2-extension",
     "keywords": [
@@ -20,15 +20,15 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/ezoterik/yii2-google-tag-manager/issues?state=open",
-        "source": "https://github.com/ezoterik/yii2-google-tag-manager"
+        "issues": "https://github.com/omnicorellc/yii2-google-tag-manager/issues?state=open",
+        "source": "https://github.com/omnicorellc/yii2-google-tag-manager"
     },
     "require": {
         "yiisoft/yii2": "*"
     },
     "autoload": {
         "psr-4": {
-            "ezoterik\\googleTagManager\\": ""
+            "omnicorellc\\googleTagManager\\": ""
         }
     }
 }
