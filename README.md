@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist ezoterik/yii2-google-tag-manager "*"
+php composer.phar require --prefer-dist omnicorellc/yii2-google-tag-manager"*"
 ```
 
 or add
 
 ```
-"ezoterik/yii2-google-tag-manager": "*"
+"omnicorellc/yii2-google-tag-manager": "*"
 ```
 
 to the require section of your `composer.json` file.
@@ -25,18 +25,29 @@ to the require section of your `composer.json` file.
 Usage
 -----
 
-0. Add this code in your *web* config file:
+1 Add this code in your *web* config file:
  ```php
  'bootstrap' => ['googleTagManager'],
  'components' => [
      'googleTagManager' => [
          'class' => 'ezoterik\googleTagManager\GoogleTagManager',
          'tagManagerId' => 'GOOGLE_TAG_MANAGER_ID', //Your Google Tag Manager ID without "GTM-" prefix
+         'tagManagerPrefix' => 'GTM-', // gtm container id prefix
      ],
  ],
  ```
 
-0. You can generate events:
+2 You can generate events:
  ```php
  Yii::$app->googleTagManager->dataLayerPushItemDelay('event', 'example_event');
+ ```
+3 Trigger render tag manager parts:
+ ```php
+ Yii::$app->getView()->trigger(\omnicorellc\googleTagManager\GoogleTagManager::EVENT_RENDER_DATA_LAYER);
+ ```
+ ```php
+  Yii::$app->getView()->trigger(\omnicorellc\googleTagManager\GoogleTagManager::EVENT_RENDER_CONTAINER_JS);
+ ```
+ ```php
+  Yii::$app->getView()->trigger(\omnicorellc\googleTagManager\GoogleTagManager::EVENT_RENDER_CONTAINER_FRAME);
  ```

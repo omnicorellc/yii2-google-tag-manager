@@ -24,11 +24,17 @@
         "source": "https://github.com/omnicorellc/yii2-google-tag-manager"
     },
     "require": {
-        "yiisoft/yii2": "*"
+        "yiisoft/yii2": "^2.0.13"
     },
     "autoload": {
         "psr-4": {
             "omnicorellc\\googleTagManager\\": ""
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
 }

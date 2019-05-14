@@ -17,3 +17,6 @@ Thumbs.db
 
 # Mac DS_Store Files
 .DS_Store
+
+# composer locl file
+composer.lock
