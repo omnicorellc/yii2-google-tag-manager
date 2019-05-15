@@ -27,5 +27,5 @@ $containerId = $tagManagerPrefix . $tagManagerId;
         j.src =
             '<?= $scriptSrc ?>?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', '<?= Html::encode($tagManagerId) ?>');
+    })(window, document, 'script', 'dataLayer', '<?= Html::encode($containerId) ?>');
 </script>
