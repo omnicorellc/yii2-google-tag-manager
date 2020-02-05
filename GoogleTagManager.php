@@ -21,9 +21,12 @@ class GoogleTagManager extends BaseObject implements BootstrapInterface
     const EVENT_RENDER_CONTAINER_JS = 'renderContainerJsEvent';
     /** @const string event upon occurrence of which the GTM frame rendering process will be launched */
     const EVENT_RENDER_CONTAINER_FRAME = 'renderContainerFrameEvent';
+    const EVENT_RENDER_GOOGLE_TAG_MANAGER = 'renderGoogleTagManagerEvent';
 
     /** @var string|null */
     public $tagManagerId;
+    /** @var string|null */
+    public $googleAnalyticId;
     /** @var string */
     public $tagManagerPrefix = 'GTM-';
     /** @var string */
@@ -38,6 +41,8 @@ class GoogleTagManager extends BaseObject implements BootstrapInterface
     public $containerJsViewFilePath;
     /** @var string */
     public $containerFrameViewFilePath;
+    /** @var string */
+    public $googleTagManagerViewFilePath;
     /** @var array */
     protected $_dataLayerForCurrentRequest = [];
 
@@ -57,6 +62,9 @@ class GoogleTagManager extends BaseObject implements BootstrapInterface
         if (empty($this->containerFrameViewFilePath)) {
             $this->containerFrameViewFilePath = __DIR__.'/views/containerFrame.php';
         }
+        if (empty($this->googleTagManagerViewFilePath)) {
+            $this->googleTagManagerViewFilePath = __DIR__.'/views/googleTagManager.php';
+        }
     }
 
     /**
@@ -67,9 +75,10 @@ class GoogleTagManager extends BaseObject implements BootstrapInterface
         if (!$app->getRequest()->getIsGet() || $app->getRequest()->getIsAjax()) {
             return;
         }
-        $app->getView()->on(self::EVENT_RENDER_DATA_LAYER,[$this,'renderDataLayer']);
-        $app->getView()->on(self::EVENT_RENDER_CONTAINER_JS,[$this,'renderContainerJs']);
-        $app->getView()->on(self::EVENT_RENDER_CONTAINER_FRAME,[$this,'renderContainerFrame']);
+        $app->getView()->on(self::EVENT_RENDER_DATA_LAYER, [$this, 'renderDataLayer']);
+        $app->getView()->on(self::EVENT_RENDER_CONTAINER_JS, [$this, 'renderContainerJs']);
+        $app->getView()->on(self::EVENT_RENDER_CONTAINER_FRAME, [$this, 'renderContainerFrame']);
+        $app->getView()->on(self::EVENT_RENDER_GOOGLE_TAG_MANAGER, [$this, 'renderGoogleTagManager']);
     }
 
     /**
@@ -144,6 +153,23 @@ class GoogleTagManager extends BaseObject implements BootstrapInterface
                 'scriptSrc' => $this->jsScriptSrc,
                 'tagManagerId' => $this->tagManagerId,
                 'tagManagerPrefix' => $this->tagManagerPrefix
+            ]
+        );
+    }
+
+    /**
+     * Rendering google tag manager js script
+     *
+     * @param Event $event
+     */
+    public function renderGoogleTagManager(Event $event)
+    {
+        /* @var $view View */
+        $view = $event->sender;
+        echo $view->renderFile(
+            $this->googleTagManagerViewFilePath,
+            [
+                'googleAnalyticId' => $this->googleAnalyticId
             ]
         );
     }
