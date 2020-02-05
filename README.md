@@ -33,6 +33,7 @@ Usage
          'class' => 'ezoterik\googleTagManager\GoogleTagManager',
          'tagManagerId' => 'GOOGLE_TAG_MANAGER_ID', //Your Google Tag Manager ID without "GTM-" prefix
          'tagManagerPrefix' => 'GTM-', // gtm container id prefix
+         'googleAnalyticId' => '', // Google analytic id
      ],
  ],
  ```
@@ -50,4 +51,7 @@ Usage
  ```
  ```php
   Yii::$app->getView()->trigger(\omnicorellc\googleTagManager\GoogleTagManager::EVENT_RENDER_CONTAINER_FRAME);
+ ```
+ ```php
+  Yii::$app->getView()->trigger(\omnicorellc\googleTagManager\GoogleTagManager::EVENT_RENDER_GOOGLE_TAG_MANAGER);
  ```
