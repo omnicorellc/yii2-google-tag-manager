@@ -23,7 +23,7 @@ $containerId = $tagManagerPrefix . $tagManagerId;
         });
         var f = d.getElementsByTagName(s)[0],
             j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
+        j.defer = true;
         j.src =
             '<?= $scriptSrc ?>?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
